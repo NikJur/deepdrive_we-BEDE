@@ -41,7 +41,9 @@ conda install dacase::ambertools-dac=25 #needs python 3.12#
 #Note that you might also need to set UCX_MEMTYPE_CACHE=n for CUDA awareness via
 #UCX. Please consult UCX documentation for further details.
 
-conda install conda-forge::openmm==7.7 -y
+#old: conda install conda-forge::openmm==7.7 -y
+conda install conda-forge::openmm -y
+
 pip install -e .
 ```
 
