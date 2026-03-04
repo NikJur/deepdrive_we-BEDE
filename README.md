@@ -19,8 +19,10 @@ Full installation including dependencies:
 ```bash
 git clone https://github.com/NikJur/deepdrive_we-BEDE.git
 cd deepdrivewe
-conda create -n deepdrivewe python=3.10 -y
-conda install omnia::ambertools -y
+#old: conda create -n deepdrivewe python=3.10 -y
+conda create -n deepdrivewe python=3.12 -y
+#old: conda install omnia::ambertools -y#
+conda install dacase::ambertools-dac=25 #needs python 3.12#
 conda install conda-forge::openmm==7.7 -y
 pip install -e .
 ```
