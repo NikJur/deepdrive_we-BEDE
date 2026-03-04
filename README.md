@@ -85,6 +85,8 @@ export PIP_CACHE_DIR="/nobackup/projects/bddur53/DDMD_WE_GH_2/.pip_cache"
 export TMPDIR="/nobackup/projects/bddur53/DDMD_WE_GH_2/.pip_cache"
 
 pip install -e .
+#if error "Failed building wheel for h5py":
+conda install conda-forge::h5py -y
 ```
 To run an example on VISTA, update the absolute paths in the submit script
 and the YAML config file, and then run the following command:
