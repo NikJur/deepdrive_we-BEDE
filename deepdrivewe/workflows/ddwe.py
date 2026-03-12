@@ -156,9 +156,15 @@ class DDWEThinker(BaseThinker):
 
         # Check if the task failed
         if not result.success:
-            self.logger.warning('Training failed, quitting workflow.')
+            self.logger.error("!!! TRAINING TASK FAILED !!!")
+            if result.failure_info:
+                # model_dump() exports all data (type, traceback, message) as a dict
+                self.logger.error(f"Failure Details: {result.failure_info.model_dump()}")
+            else:
+                self.logger.error("No failure info available (Task likely killed by Slurm).")
             self.done.set()
             return
+
 
         # Store the training output
         self.train_output = result.value
@@ -178,9 +184,15 @@ class DDWEThinker(BaseThinker):
 
         # Check if the task failed
         if not result.success:
-            self.logger.warning('Inference failed, quitting workflow.')
+            self.logger.error("!!! INFERENCE TASK FAILED !!!")
+            if result.failure_info:
+                # model_dump() exports all data (type, traceback, message) as a dict
+                self.logger.error(f"Failure Details: {result.failure_info.model_dump()}")
+            else:
+                self.logger.error("No failure info available (Task likely killed by Slurm).")
             self.done.set()
             return
+
 
         # Unpack the output
         cur_sims, next_sims, metadata = result.value
